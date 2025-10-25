@@ -214,6 +214,8 @@ const filteredAndSortedTodos = computed(() => {
   
   filtered.sort((a, b) => {
     if (sortBy.value === 'dueDate') {
+      if (!a.dueDate) return 1
+      if (!b.dueDate) return -1
       return new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime()
     } else if (sortBy.value === 'priority') {
       const priorityWeight = { low: 0, medium: 1, high: 2 }

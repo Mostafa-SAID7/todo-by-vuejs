@@ -1,39 +1,58 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { mount } from '@vue/test-utils';
+import { ref } from 'vue';
 import App from './App.vue';
+import { i18n } from './i18n';
+
+// Mock the `useI18n` function
+vi.mock('vue-i18n', async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...actual,
+    useI18n: () => ({
+      t: (key: string) => key,
+      locale: ref('en'),
+    }),
+  };
+});
 
 describe('App', () => {
   it('sorts todos with due dates correctly, placing those without due dates at the end', async () => {
-    const wrapper = mount(App);
+    const wrapper = mount(App, {
+      global: {
+        plugins: [i18n],
+      },
+    });
 
-    // Add some todos
-    await wrapper.vm.addTodo({
-      id: 1,
-      text: 'Todo with late due date',
-      completed: false,
-      category: 'Work',
-      dueDate: '2024-12-31',
-      priority: 'medium',
-    });
-    await wrapper.vm.addTodo({
-      id: 2,
-      text: 'Todo with early due date',
-      completed: false,
-      category: 'Personal',
-      dueDate: '2024-01-01',
-      priority: 'high',
-    });
-    await wrapper.vm.addTodo({
-      id: 3,
-      text: 'Todo without due date',
-      completed: false,
-      category: 'Misc',
-      dueDate: '',
-      priority: 'low',
-    });
+    wrapper.vm.todos = [
+      {
+        id: 1,
+        text: 'Todo with late due date',
+        completed: false,
+        category: 'Work',
+        dueDate: '2024-12-31',
+        priority: 'medium',
+      },
+      {
+        id: 2,
+        text: 'Todo with early due date',
+        completed: false,
+        category: 'Personal',
+        dueDate: '2024-01-01',
+        priority: 'high',
+      },
+      {
+        id: 3,
+        text: 'Todo without due date',
+        completed: false,
+        category: 'Misc',
+        dueDate: '',
+        priority: 'low',
+      },
+    ];
 
     // Set sort by due date
-    await wrapper.setData({ sortBy: 'dueDate' });
+    wrapper.vm.sortBy = 'dueDate';
 
     // Wait for the computed property to update
     await wrapper.vm.$nextTick();
