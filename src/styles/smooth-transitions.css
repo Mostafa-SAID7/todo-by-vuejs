@@ -1,0 +1,209 @@
+/**
+ * Smooth Color Transitions
+ * Ensures seamless theme switching without jarring color changes
+ * All transitions are 500ms with smooth cubic-bezier easing
+ */
+
+/* ============================================
+   SMOOTH COLOR TRANSITION SETUP
+   ============================================ */
+
+/* Root transition base */
+html,
+body,
+#app {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              caret-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Smooth transitions on all elements */
+* {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              box-shadow 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              fill 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              stroke 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              text-decoration-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* ============================================
+   SPECIFIC ELEMENT SMOOTH TRANSITIONS
+   ============================================ */
+
+/* Headers smooth transition */
+h1, h2, h3, h4, h5, h6 {
+  transition: color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Paragraphs smooth transition */
+p, span, a, li, label {
+  transition: color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              text-decoration-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Button smooth transitions */
+button, [role="button"] {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              box-shadow 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Input smooth transitions */
+input, textarea, select {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              box-shadow 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              caret-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* ============================================
+   CSS VARIABLE SMOOTH TRANSITIONS
+   ============================================ */
+
+/* All elements using CSS variables transition smoothly */
+:root {
+  transition: --bg-primary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --bg-secondary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --bg-tertiary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --text-primary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --text-secondary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --border-primary 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+html.dark {
+  transition: --bg-primary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --bg-secondary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --bg-tertiary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --text-primary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --text-secondary 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              --border-primary 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* ============================================
+   COMPONENT SPECIFIC SMOOTH TRANSITIONS
+   ============================================ */
+
+/* Cards smooth transitions */
+.card,
+.card-container,
+.todo-item {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              box-shadow 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Sidebar smooth transitions */
+aside,
+.sidebar-animated {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Header smooth transitions */
+header {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Modal smooth transitions */
+.modal-content,
+.modal-backdrop {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Badge smooth transitions */
+.badge {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              border-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* ============================================
+   ICON SMOOTH TRANSITIONS
+   ============================================ */
+
+/* SVG icons smooth color transitions */
+svg, [role="img"] {
+  transition: fill 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              stroke 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* ============================================
+   PLACEHOLDER & TEXT SMOOTH TRANSITIONS
+   ============================================ */
+
+/* Placeholder text smooth transition */
+::placeholder {
+  transition: color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* Selection smooth transition */
+::selection {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1),
+              color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* ============================================
+   PREVENT FLICKERING & JARRING CHANGES
+   ============================================ */
+
+/* Disable transitions during animation to prevent overlap */
+.animating * {
+  transition: none !important;
+}
+
+/* Smooth scrollbar transitions */
+::-webkit-scrollbar-thumb {
+  transition: background-color 500ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+/* ============================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================ */
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================
+   TIMING EXPLANATION
+   ============================================ */
+
+/*
+  TIMING: 500ms (half second)
+  - Reason: Smooth enough to feel natural, fast enough not to lag
+  - Not too slow (< 300ms feels jarring for color)
+  - Not too fast (> 600ms feels sluggish)
+
+  EASING: cubic-bezier(0.4, 0.0, 0.2, 1)
+  - This is the "material design" standard easing curve
+  - Provides smooth, natural-feeling motion
+  - Fast start, smooth deceleration at end
+  - Perfect for color transitions
+
+  PROPERTIES:
+  - background-color: Main colors
+  - color: Text colors
+  - border-color: Borders and outlines
+  - box-shadow: Shadows and glows
+  - fill/stroke: SVG icons
+  - text-decoration-color: Links and underlines
+  - caret-color: Text cursor
+*/

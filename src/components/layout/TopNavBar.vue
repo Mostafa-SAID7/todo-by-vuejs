@@ -3,13 +3,10 @@
  * TopNavBar Component
  * Horizontal header navigation with smooth theme/language controls
  * Fully responsive with hamburger menu on mobile
- * Uses Motion library for professional animations
  */
 
 import { ref } from 'vue'
 import { Menu, Moon, Sun, Globe, Search } from 'lucide-vue-next'
-import { animate } from 'motion'
-import Button from '@/components/ui/Button.vue'
 
 interface Props {
   isMobile?: boolean
@@ -32,31 +29,25 @@ const emit = defineEmits<{
   search: [query: string]
 }>()
 
-const themeIconRef = ref<SVGElement | null>(null)
+const isThemeToggling = ref(false)
+const isLangToggling = ref(false)
 
-const handleThemeToggle = async () => {
-  // Animate icon rotation with Motion library
-  if (themeIconRef.value) {
-    await animate(
-      themeIconRef.value,
-      { rotate: [0, 360] },
-      { duration: 0.6, easing: 'ease-out' }
-    )
-  }
+const handleThemeToggle = () => {
+  isThemeToggling.value = true
   emit('toggleTheme')
+  // Reset after animation completes
+  setTimeout(() => {
+    isThemeToggling.value = false
+  }, 600)
 }
 
 const handleLanguageToggle = () => {
-  // Simple animation for language toggle
-  const langBtn = document.querySelector('[data-lang-btn]') as HTMLElement
-  if (langBtn) {
-    animate(
-      langBtn,
-      { rotate: [0, 10, -10, 0] },
-      { duration: 0.4, easing: 'ease-out' }
-    )
-  }
+  isLangToggling.value = true
   emit('toggleLanguage')
+  // Reset after animation completes
+  setTimeout(() => {
+    isLangToggling.value = false
+  }, 400)
 }
 </script>
 
@@ -106,17 +97,17 @@ const handleLanguageToggle = () => {
 
         <!-- Language Toggle - Icon Only -->
         <button
-          data-lang-btn
           :class="[
             'p-2.5 rounded-lg transition-all duration-200',
             'text-[var(--text-primary)] hover:text-[var(--accent-primary)]',
             'hover:bg-[var(--accent-bg)]',
             'focus:outline-none focus:ring-2 focus:ring-[var(--accent-primary)]',
+            isLangToggling ? 'scale-110' : 'scale-100',
           ]"
           :aria-label="`Switch to ${currentLanguage === 'en' ? 'Arabic' : 'English'}`"
           @click="handleLanguageToggle"
         >
-          <Globe :size="24" />
+          <Globe :size="24" :class="isLangToggling ? 'rotate-12' : ''" />
         </button>
 
         <!-- Theme Toggle - Icon Only -->
@@ -131,10 +122,12 @@ const handleLanguageToggle = () => {
           @click="handleThemeToggle"
         >
           <component
-            ref="themeIconRef"
             :is="isDark ? Sun : Moon"
             :size="24"
-            class="transition-transform duration-300"
+            :class="[
+              'transition-transform duration-600 ease-out',
+              isThemeToggling ? 'rotate-360' : '',
+            ]"
           />
         </button>
 

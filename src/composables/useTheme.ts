@@ -64,7 +64,10 @@ export function useTheme() {
    */
   watch(isDark, (newValue) => {
     storageService.setItem(DARK_MODE_KEY, String(newValue))
-    applyTheme(newValue ? 'dark' : 'light')
+    // Add slight delay to ensure CSS transitions are ready
+    requestAnimationFrame(() => {
+      applyTheme(newValue ? 'dark' : 'light')
+    })
   })
 
   /**

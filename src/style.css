@@ -3,7 +3,10 @@
  * Imports all global styles, components, themes, and animations
  */
 
-/* Import Animations First (for GPU acceleration) */
+/* Import Smooth Transitions FIRST (before other styles) */
+@import './styles/smooth-transitions.css';
+
+/* Import Animations */
 @import './styles/animations.css';
 
 /* Import Global Styles */
