@@ -134,7 +134,7 @@ When tag is pushed:
 git checkout main
 git pull origin main
 
-# 2. Update CHANGELOG.md manually or via command
+# 2. Update CHANGELOG.md manually
 # (Add new version section with all changes)
 
 # 3. Commit CHANGELOG
@@ -222,7 +222,6 @@ After GitHub Actions completes:
 | `.github/workflows/ci.yml` | Build & test automation |
 | `.github/workflows/release.yml` | Release automation |
 | `CHANGELOG.md` | Release notes & version history |
-| `GIT_WORKFLOW.md` | This guide |
 | `package.json` | Scripts & dependencies |
 | `vite.config.ts` | Build settings |
 

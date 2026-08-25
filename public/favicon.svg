@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Background -->
+  <rect width="128" height="128" rx="24" fill="#0f1419"/>
+  
+  <!-- Outer glow circle (orange) -->
+  <circle cx="64" cy="64" r="58" fill="none" stroke="#ff8955" stroke-width="3" opacity="0.3"/>
+  
+  <!-- Main circle background -->
+  <circle cx="64" cy="64" r="54" fill="#1a1f2e"/>
+  
+  <!-- Orange accent border -->
+  <circle cx="64" cy="64" r="54" fill="none" stroke="#ff8955" stroke-width="2"/>
+  
+  <!-- Checkmark (completed todo) -->
+  <g transform="translate(64, 64)">
+    <!-- Check circle background -->
+    <circle cx="0" cy="0" r="40" fill="none" stroke="#ff8955" stroke-width="3"/>
+    
+    <!-- Checkmark -->
+    <path d="M -15 0 L -5 10 L 20 -15" fill="none" stroke="#ff8955" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Small decorative dots (future todos) -->
+  <circle cx="30" cy="50" r="4" fill="#ff7a45" opacity="0.6"/>
+  <circle cx="98" cy="55" r="4" fill="#ff7a45" opacity="0.6"/>
+  <circle cx="32" cy="78" r="4" fill="#ff7a45" opacity="0.4"/>
+</svg>
