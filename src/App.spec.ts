@@ -6,7 +6,7 @@ import { i18n } from './i18n';
 
 // Mock the `useI18n` function
 vi.mock('vue-i18n', async (importOriginal) => {
-  const actual = await importOriginal();
+  const actual = await importOriginal() as any;
   return {
     ...actual,
     useI18n: () => ({
@@ -24,7 +24,11 @@ describe('App', () => {
       },
     });
 
-    wrapper.vm.todos = [
+    // Get the component instance
+    const vm = wrapper.vm as any;
+
+    // Set todos via reactive array
+    vm.todos = [
       {
         id: 1,
         text: 'Todo with late due date',
@@ -52,13 +56,13 @@ describe('App', () => {
     ];
 
     // Set sort by due date
-    wrapper.vm.sortBy = 'dueDate';
+    vm.sortBy = 'dueDate';
 
     // Wait for the computed property to update
     await wrapper.vm.$nextTick();
 
-    // Get the sorted todos
-    const sortedTodos = wrapper.vm.filteredAndSortedTodos;
+    // Get the sorted todos from computed property
+    const sortedTodos = vm.filteredAndSortedTodos;
 
     // Expectations
     expect(sortedTodos.length).toBe(3);
