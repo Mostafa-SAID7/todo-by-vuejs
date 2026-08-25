@@ -1,0 +1,60 @@
+name: Stale - Close inactive issues and PRs
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday at midnight UTC
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close stale issues and PRs
+        uses: actions/stale@v9
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          
+          # Issues configuration
+          days-before-issue-stale: 30
+          days-before-issue-close: 7
+          stale-issue-label: 'stale'
+          stale-issue-message: |
+            🤖 This issue has been automatically marked as stale because it has not had recent activity for 30 days.
+            
+            If this is still relevant, please:
+            - Add a comment to keep it open
+            - Update any related PR
+            - Assign someone to work on it
+            
+            Otherwise, it will be closed in 7 days.
+          close-issue-message: |
+            🤖 This issue has been automatically closed because it remained stale for 7 days without activity.
+            
+            Feel free to reopen it if it's still relevant!
+          
+          # Pull Requests configuration
+          days-before-pr-stale: 14
+          days-before-pr-close: 7
+          stale-pr-label: 'stale'
+          stale-pr-message: |
+            🤖 This PR has been automatically marked as stale because it has not had recent activity for 14 days.
+            
+            If you're still working on this:
+            - Add a comment to keep it open
+            - Push new commits
+            - Request review from maintainers
+            
+            Otherwise, it will be closed in 7 days.
+          close-pr-message: |
+            🤖 This PR has been automatically closed because it remained stale for 7 days without activity.
+            
+            Feel free to reopen it or create a new PR if you'd like to continue!
+          
+          # Exemptions
+          exempt-issue-labels: 'bug,enhancement,documentation,blocked'
+          exempt-pr-labels: 'wip,blocked'
+          exempt-draft-pr: true

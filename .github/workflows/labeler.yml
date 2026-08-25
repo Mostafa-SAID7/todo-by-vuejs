@@ -1,0 +1,31 @@
+name: Labeler - Auto-label PRs
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull-requests: write
+  contents: read
+
+jobs:
+  labeler:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Label PR by size
+        uses: codelytv/pr-size-labeler@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          xs_max_size: 10
+          s_max_size: 100
+          m_max_size: 500
+          l_max_size: 1000
+          fail_if_xl: false
+          files_to_ignore: |
+            dist/
+            node_modules/
+            package-lock.json
+            .husky/
