@@ -1,19 +1,38 @@
+/**
+ * Main Style Entry Point
+ * Imports all global styles, components, themes, and animations
+ */
+
+/* Import Animations First (for GPU acceleration) */
+@import './styles/animations.css';
+
+/* Import Global Styles */
+@import './styles/globals.css';
+@import './styles/components.css';
+@import './styles/themes.css';
+
+/* Default Tailwind Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Typography Base */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Body Defaults */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
 }
 
+/* Dark Mode Color Scheme */
 .dark {
   color-scheme: dark;
 }

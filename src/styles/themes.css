@@ -1,0 +1,306 @@
+/**
+ * Theme Definitions - Professional Color System
+ * Premium light and dark themes with orange accent
+ * Optimized for visual hierarchy and readability
+ */
+
+/* ============================================
+   LIGHT THEME (Default)
+   ============================================ */
+:root {
+  /* === PRIMARY BACKGROUND COLORS === */
+  --bg-primary: #ffffff;
+  --bg-secondary: #faf8f7;
+  --bg-tertiary: #f5f1ed;
+  --bg-quaternary: #f0ede8;
+  --bg-hover: #fff3ed;
+  --bg-active: #ffe5d5;
+
+  /* === TEXT COLORS === */
+  --text-primary: #18212f;
+  --text-secondary: #5a6470;
+  --text-tertiary: #8b92a0;
+  --text-muted: #b0b8c1;
+
+  /* === BORDER COLORS === */
+  --border-primary: #f0ede8;
+  --border-secondary: #ffe5d5;
+  --border-light: #fff3ed;
+  --border-focus: #ff7a45;
+  --border-accent: #ffa66d;
+
+  /* === ORANGE ACCENT (Primary Brand Color) === */
+  --accent-primary: #ff7a45;
+  --accent-light: #ffa66d;
+  --accent-lighter: #ffc599;
+  --accent-lightest: #ffe5d5;
+  --accent-dark: #e85c1f;
+  --accent-darker: #cc4a0d;
+  --accent-bg: #fff3ed;
+  --accent-bg-light: #fffaf6;
+  --accent-subtle: #f5ede8;
+  --accent-border: #ffc599;
+
+  /* === STATUS COLORS === */
+  /* Success */
+  --success-primary: #10b981;
+  --success-light: #6ee7b7;
+  --success-lighter: #d1fae5;
+  --success-bg: #ecfdf5;
+
+  /* Warning */
+  --warning-primary: #f59e0b;
+  --warning-light: #fcd34d;
+  --warning-lighter: #fef3c7;
+  --warning-bg: #fffbeb;
+
+  /* Danger */
+  --danger-primary: #ef4444;
+  --danger-light: #fca5a5;
+  --danger-lighter: #fee2e2;
+  --danger-bg: #fef2f2;
+
+  /* Info */
+  --info-primary: #0ea5e9;
+  --info-light: #38bdf8;
+  --info-lighter: #cffafe;
+  --info-bg: #f0f9ff;
+
+  /* === GRAY SCALE === */
+  --gray-50: #fafbfc;
+  --gray-100: #f3f4f6;
+  --gray-150: #f0f1f3;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  /* === SHADOWS === */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 20px 0 rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 12px 32px 0 rgba(0, 0, 0, 0.15);
+
+  /* === ACCENT SHADOWS === */
+  /* Warm orange glow in light mode */
+  --shadow-accent: 0 4px 16px rgba(255, 122, 69, 0.15);
+  --shadow-accent-lg: 0 8px 24px rgba(255, 122, 69, 0.22);
+}
+
+/* ============================================
+   DARK THEME - Orange-Centric Professional Design
+   ============================================ */
+html.dark {
+  /* === PRIMARY BACKGROUND COLORS === */
+  /* Deep navy/charcoal with orange undertones */
+  --bg-primary: #0f1419;
+  --bg-secondary: #1a1f2e;
+  --bg-tertiary: #242d3f;
+  --bg-quaternary: #2d3849;
+  --bg-hover: #3d2817;
+  --bg-active: #4d3624;
+
+  /* === TEXT COLORS === */
+  /* Carefully chosen for contrast with orange */
+  --text-primary: #ffffff;
+  --text-secondary: #ffd7c4;
+  --text-tertiary: #ffaa7a;
+  --text-muted: #ff8955;
+
+  /* === BORDER COLORS === */
+  /* Orange-tinted borders for dark mode */
+  --border-primary: #4d3624;
+  --border-secondary: #3d2817;
+  --border-light: #652d0a;
+  --border-focus: #ff9966;
+  --border-accent: #ff8955;
+
+  /* === ORANGE ACCENT (Primary Brand Color) === */
+  /* Vibrant and prominent in dark mode */
+  --accent-primary: #ff8955;
+  --accent-light: #ffaa7a;
+  --accent-lighter: #ffcaa8;
+  --accent-lightest: #ffe5d5;
+  --accent-dark: #ff6b2e;
+  --accent-darker: #e85c1f;
+  --accent-bg: #3d2817;
+  --accent-bg-light: #4d3624;
+  --accent-subtle: #2d1a0f;
+  --accent-border: #ff8955;
+
+  /* === STATUS COLORS === */
+  /* Adjusted for dark background with orange harmony */
+  
+  /* Success */
+  --success-primary: #34d399;
+  --success-light: #6ee7b7;
+  --success-lighter: #a7f3d0;
+  --success-bg: #064e3b;
+
+  /* Warning */
+  --warning-primary: #fbbf24;
+  --warning-light: #fcd34d;
+  --warning-lighter: #fde68a;
+  --warning-bg: #54381e;
+
+  /* Danger */
+  --danger-primary: #f87171;
+  --danger-light: #fca5a5;
+  --danger-lighter: #fcbdbd;
+  --danger-bg: #5a2424;
+
+  /* Info */
+  --info-primary: #38bdf8;
+  --info-light: #7dd3fc;
+  --info-lighter: #b3e5fc;
+  --info-bg: #0c3d5a;
+
+  /* === GRAY SCALE === */
+  /* Inverted for dark mode */
+  --gray-50: #0f1419;
+  --gray-100: #1a1f2e;
+  --gray-150: #242d3f;
+  --gray-200: #2d3849;
+  --gray-300: #3d4757;
+  --gray-400: #5a6470;
+  --gray-500: #7a8290;
+  --gray-600: #a8aeb9;
+  --gray-700: #c4cad4;
+  --gray-800: #e5e7eb;
+  --gray-900: #f5f7fa;
+
+  /* === SHADOWS === */
+  /* Deeper, more pronounced shadows for dark mode */
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px 0 rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 8px 20px 0 rgba(0, 0, 0, 0.7);
+  --shadow-xl: 0 12px 32px 0 rgba(0, 0, 0, 0.8);
+
+  /* === ACCENT SHADOWS === */
+  /* Prominent orange glow in dark mode */
+  --shadow-accent: 0 4px 16px rgba(255, 137, 85, 0.4);
+  --shadow-accent-lg: 0 8px 24px rgba(255, 137, 85, 0.5);
+}
+
+/* Priority Badge Colors - Light Theme */
+.priority-low-light {
+  @apply bg-green-100 text-green-800;
+}
+
+.priority-medium-light {
+  @apply bg-yellow-100 text-yellow-800;
+}
+
+.priority-high-light {
+  @apply bg-red-100 text-red-800;
+}
+
+/* Priority Badge Colors - Dark Theme */
+.priority-low-dark {
+  @apply bg-green-900 text-green-200;
+}
+
+.priority-medium-dark {
+  @apply bg-yellow-900 text-yellow-200;
+}
+
+.priority-high-dark {
+  @apply bg-red-900 text-red-200;
+}
+
+/* Category Badge - Light Theme */
+.category-badge-light {
+  @apply bg-gray-200 text-gray-800;
+}
+
+/* Category Badge - Dark Theme */
+.category-badge-dark {
+  @apply bg-gray-700 text-gray-200;
+}
+
+/* Due Date Badge - Light Theme */
+.due-date-badge-light {
+  @apply bg-blue-100 text-blue-800;
+}
+
+/* Due Date Badge - Dark Theme */
+.due-date-badge-dark {
+  @apply bg-blue-900 text-blue-200;
+}
+
+/* ===== ORANGE-ENHANCED STYLES ===== */
+
+/* Orange accent backgrounds */
+.bg-accent-subtle {
+  background-color: var(--accent-subtle);
+}
+
+.bg-accent-primary {
+  background-color: var(--accent-primary);
+}
+
+/* Orange borders */
+.border-accent {
+  border-color: var(--accent-primary);
+  @apply border;
+}
+
+.border-accent-focus {
+  border-color: var(--accent-light);
+  @apply border-2;
+}
+
+/* Orange text */
+.text-accent {
+  color: var(--accent-primary);
+}
+
+.text-accent-light {
+  color: var(--accent-light);
+}
+
+/* Orange hover states */
+.hover-accent {
+  @apply transition-colors duration-200;
+}
+
+.hover-accent:hover {
+  background-color: var(--accent-bg);
+  color: var(--accent-primary);
+}
+
+/* Orange glow effect */
+.glow-accent {
+  box-shadow: var(--shadow-accent);
+}
+
+.glow-accent-lg {
+  box-shadow: var(--shadow-accent-lg);
+}
+
+/* Orange focus ring */
+.focus-ring-accent {
+  @apply outline-none;
+}
+
+.focus-ring-accent:focus {
+  box-shadow: 0 0 0 3px var(--accent-bg), 0 0 0 5px var(--accent-primary);
+}
+
+/* Smooth Transitions */
+* {
+  @apply transition-colors duration-300;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+  @apply outline-none;
+}

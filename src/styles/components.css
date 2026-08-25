@@ -1,0 +1,685 @@
+/**
+ * Component-Specific Styles
+ * Professional component layer with orange accent theme
+ * Uses CSS variables for perfect dark/light theme switching
+ */
+
+@layer components {
+  /* ===== BUTTON STYLES ===== */
+  .btn {
+    @apply px-4 py-2.5 rounded-lg font-medium transition-all duration-200 ease-out;
+    @apply focus:outline-none active:scale-95;
+  }
+
+  /* Primary Button - Orange Accent */
+  .btn-primary {
+    background-color: var(--accent-primary);
+    color: white;
+    box-shadow: var(--shadow-accent);
+    transition: all 0.2s ease-out;
+    border: 2px solid var(--accent-primary);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--accent-dark);
+    box-shadow: var(--shadow-accent-lg);
+    transform: translateY(-1px);
+    border-color: var(--accent-dark);
+  }
+
+  .btn-primary:focus {
+    box-shadow: 0 0 0 3px var(--accent-bg), 0 0 0 5px var(--accent-primary);
+  }
+
+  /* Secondary Button */
+  .btn-secondary {
+    background-color: var(--accent-bg);
+    color: var(--accent-primary);
+    border: 2px solid var(--accent-light);
+    transition: all 0.2s ease-out;
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--accent-lighter);
+    border-color: var(--accent-primary);
+    color: var(--accent-dark);
+  }
+
+  /* Danger Button */
+  .btn-danger {
+    background-color: var(--danger-primary);
+    color: white;
+    box-shadow: var(--shadow-md);
+    transition: all 0.2s ease-out;
+  }
+
+  .btn-danger:hover {
+    background-color: var(--danger-light);
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Success Button */
+  .btn-success {
+    background-color: var(--success-primary);
+    color: white;
+    transition: all 0.2s ease-out;
+  }
+
+  .btn-success:hover {
+    background-color: var(--success-light);
+  }
+
+  /* Disabled State */
+  .btn:disabled {
+    @apply opacity-50 cursor-not-allowed;
+  }
+
+  /* ===== INPUT STYLES ===== */
+  .input-field {
+    @apply px-4 py-2.5 rounded-lg border-2 focus:outline-none transition-all duration-200;
+    background-color: var(--bg-primary);
+    border-color: var(--border-primary);
+    color: var(--text-primary);
+  }
+
+  .input-field::placeholder {
+    color: var(--text-tertiary);
+  }
+
+  .input-field:hover {
+    border-color: var(--border-accent);
+  }
+
+  .input-field:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-bg), var(--shadow-accent);
+  }
+
+  /* ===== SELECT STYLES ===== */
+  select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem auto;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+
+  html.dark select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23a8aeb9' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  }
+
+  /* ===== CARD STYLES ===== */
+  .card {
+    @apply rounded-xl shadow-md p-6 transition-all duration-200;
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-accent);
+    color: var(--text-primary);
+  }
+
+  .card:hover {
+    box-shadow: var(--shadow-lg), var(--shadow-accent);
+    transform: translateY(-2px);
+    border-color: var(--accent-primary);
+  }
+
+  /* ===== BADGE STYLES ===== */
+  .badge {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-colors;
+  }
+
+  /* Badge Colors */
+  .badge-primary {
+    background-color: var(--accent-bg);
+    color: var(--accent-primary);
+  }
+
+  .badge-secondary {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+  }
+
+  .badge-success {
+    background-color: var(--success-bg);
+    color: var(--success-primary);
+  }
+
+  .badge-warning {
+    background-color: var(--warning-bg);
+    color: var(--warning-primary);
+  }
+
+  .badge-danger {
+    background-color: var(--danger-bg);
+    color: var(--danger-primary);
+  }
+
+  .badge-info {
+    background-color: var(--info-bg);
+    color: var(--info-primary);
+  }
+
+  /* ===== TODO ITEM STYLES ===== */
+  .todo-item {
+    @apply flex items-center justify-between p-4 rounded-lg transition-all duration-200;
+    background-color: var(--bg-primary);
+    border: 2px solid var(--border-accent);
+    color: var(--text-primary);
+  }
+
+  .todo-item:hover {
+    background-color: var(--accent-bg);
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-accent);
+  }
+
+  .todo-text {
+    @apply transition-all duration-200;
+    color: var(--text-primary);
+  }
+
+  .todo-text-completed {
+    @apply line-through;
+    opacity: 0.6;
+    color: var(--text-tertiary);
+  }
+
+  /* ===== MODAL STYLES ===== */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50;
+  }
+
+  .modal-content {
+    @apply relative rounded-2xl shadow-xl p-6;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
+  }
+
+  /* ===== HEADER STYLES ===== */
+  .header {
+    @apply flex justify-between items-center gap-4 mb-8 flex-wrap sm:flex-nowrap;
+  }
+
+  .header-title {
+    @apply text-3xl font-bold;
+    color: var(--text-primary);
+  }
+
+  /* ===== CONTAINER STYLES ===== */
+  .app-container {
+    @apply mx-auto max-w-2xl px-4 py-8;
+  }
+
+  .card-container {
+    @apply rounded-2xl shadow-lg p-6;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-primary);
+    color: var(--text-primary);
+  }
+
+  /* ===== FORM STYLES ===== */
+  .form-group {
+    @apply space-y-2;
+  }
+
+  .form-label {
+    @apply block text-sm font-semibold;
+    color: var(--text-primary);
+  }
+
+  .form-helper-text {
+    @apply block text-xs mt-1;
+    color: var(--text-tertiary);
+  }
+
+  /* ===== LIST STYLES ===== */
+  .list-container {
+    @apply space-y-3;
+  }
+
+  .list-item {
+    @apply p-3 rounded-lg transition-colors;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+
+  /* ===== PRIORITY BADGES ===== */
+  .priority-low {
+    background-color: var(--success-bg);
+    color: var(--success-primary);
+  }
+
+  .priority-medium {
+    background-color: var(--warning-bg);
+    color: var(--warning-primary);
+  }
+
+  .priority-high {
+    background-color: var(--danger-bg);
+    color: var(--danger-primary);
+  }
+
+  /* ===== TEXT COLOR UTILITIES ===== */
+  .text-primary {
+    color: var(--text-primary);
+  }
+
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+
+  .text-tertiary {
+    color: var(--text-tertiary);
+  }
+
+  .text-muted {
+    color: var(--text-muted);
+  }
+
+  .text-accent {
+    color: var(--accent-primary);
+  }
+
+  .text-success {
+    color: var(--success-primary);
+  }
+
+  .text-warning {
+    color: var(--warning-primary);
+  }
+
+  .text-danger {
+    color: var(--danger-primary);
+  }
+
+  .text-info {
+    color: var(--info-primary);
+  }
+
+  /* ===== ELEVATION UTILITIES ===== */
+  .elevation-1 {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .elevation-2 {
+    box-shadow: var(--shadow-md);
+  }
+
+  .elevation-3 {
+    box-shadow: var(--shadow-lg);
+  }
+
+  .elevation-4 {
+    box-shadow: var(--shadow-xl);
+  }
+
+  /* ===== DIVIDER ===== */
+  .divider {
+    @apply h-px;
+    background-color: var(--border-primary);
+  }
+
+  /* ===== STATUS INDICATOR ===== */
+  .status-dot {
+    @apply inline-block w-2 h-2 rounded-full;
+  }
+
+  .status-active {
+    background-color: var(--success-primary);
+    @apply animate-pulse;
+  }
+
+  .status-inactive {
+    background-color: var(--text-tertiary);
+  }
+}
+
+/* ===== ORANGE ACCENT ENHANCEMENTS ===== */
+
+/* Orange accent hover effects */
+.accent-hover {
+  @apply transition-all duration-200;
+}
+
+.accent-hover:hover {
+  background-color: var(--accent-bg);
+  color: var(--accent-primary);
+}
+
+/* Orange borders */
+.border-accent-primary {
+  border-color: var(--accent-primary);
+  @apply border-2;
+}
+
+.border-accent-light {
+  border-color: var(--accent-light);
+  @apply border;
+}
+
+/* Orange text gradients */
+.text-accent-gradient {
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Orange backgrounds */
+.bg-accent-warm {
+  background-color: var(--accent-bg);
+}
+
+.bg-accent-warm-dark {
+  background-color: var(--accent-bg-light);
+}
+
+/* Orange shadow glow */
+.shadow-orange-glow {
+  box-shadow: var(--shadow-accent-lg);
+}
+
+/* Orange accent badge */
+.badge-orange-accent {
+  background-color: var(--accent-bg);
+  color: var(--accent-primary);
+  border: 1px solid var(--border-accent);
+  @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium;
+}
+
+
+/* ===== RESPONSIVE LAYOUT STYLES ===== */
+
+/* Mobile-first responsive layout */
+@media (max-width: 767px) {
+  /* Mobile sidebar should overlay */
+  aside {
+    position: fixed;
+    z-index: 50;
+  }
+
+  /* Main content takes full width on mobile */
+  main {
+    width: 100%;
+  }
+
+  /* Reduce padding on mobile */
+  .app-container {
+    @apply px-3 py-4;
+  }
+
+  /* Stack items vertically on small screens */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  /* Smaller heading on mobile */
+  .header-title {
+    @apply text-2xl;
+  }
+
+  /* Adjust card padding on mobile */
+  .card,
+  .card-container {
+    @apply p-4;
+  }
+
+  /* Full width buttons on mobile */
+  .btn {
+    @apply w-full;
+  }
+
+  /* Reduce gap in lists */
+  .list-container {
+    @apply space-y-2;
+  }
+}
+
+/* Tablet screens (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Collapsed sidebar on tablet */
+  aside {
+    width: 80px;
+  }
+
+  /* Hide text labels on tablet */
+  aside span {
+    display: none;
+  }
+
+  /* Adjust main content */
+  main {
+    flex: 1;
+  }
+
+  /* Slightly larger padding on tablet */
+  .app-container {
+    @apply px-4 py-6;
+  }
+}
+
+/* Desktop screens (1024px and up) */
+@media (min-width: 1024px) {
+  /* Full sidebar on desktop */
+  aside {
+    width: 256px;
+  }
+
+  /* Show all text labels on desktop */
+  aside span {
+    display: inline;
+  }
+
+  /* Normal padding on desktop */
+  .app-container {
+    @apply px-6 py-8;
+  }
+
+  /* Flexible layout */
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Large desktop screens (1440px and up) */
+@media (min-width: 1440px) {
+  /* Increase max width of container */
+  .app-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Larger heading on big screens */
+  .header-title {
+    @apply text-4xl;
+  }
+}
+
+/* ===== SIDEBAR RESPONSIVE STYLES ===== */
+
+/* Collapsed sidebar (tablet) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  aside {
+    width: 80px;
+    position: static;
+  }
+
+  aside button {
+    justify-content: center;
+  }
+
+  aside .hidden.lg\:inline {
+    display: none;
+  }
+
+  aside .hidden.lg\:flex {
+    display: none;
+  }
+}
+
+/* Full sidebar (desktop) */
+@media (min-width: 1024px) {
+  aside {
+    width: 256px;
+    position: static;
+  }
+
+  aside button {
+    justify-content: flex-start;
+  }
+
+  aside .hidden.lg\:inline {
+    display: inline;
+  }
+
+  aside .hidden.lg\:flex {
+    display: flex;
+  }
+}
+
+/* ===== HEADER RESPONSIVE STYLES ===== */
+
+/* Mobile header */
+@media (max-width: 639px) {
+  header {
+    padding: 1rem;
+  }
+
+  .header-title {
+    @apply text-lg;
+  }
+
+  /* Hide search on small mobile */
+  .hidden.sm\:flex {
+    display: none;
+  }
+}
+
+/* Tablet and up header */
+@media (min-width: 640px) {
+  header {
+    padding: 1.5rem;
+  }
+
+  /* Show search */
+  .hidden.sm\:flex {
+    display: flex;
+  }
+}
+
+/* ===== CONTENT AREA RESPONSIVE STYLES ===== */
+
+/* Mobile content padding */
+@media (max-width: 767px) {
+  main {
+    padding: 1rem;
+  }
+
+  /* Reduce item spacing on mobile */
+  .todo-item {
+    @apply p-3;
+  }
+
+  /* Stack form fields */
+  .form-group {
+    @apply space-y-3;
+  }
+}
+
+/* Desktop content padding */
+@media (min-width: 768px) {
+  main {
+    padding: 1.5rem;
+  }
+
+  .todo-item {
+    @apply p-4;
+  }
+}
+
+/* ===== GRID RESPONSIVE STYLES ===== */
+
+/* Single column on mobile */
+@media (max-width: 767px) {
+  .grid-responsive {
+    @apply grid-cols-1;
+  }
+
+  .grid-2-responsive {
+    @apply grid-cols-1;
+  }
+}
+
+/* Two columns on tablet */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .grid-responsive {
+    @apply grid-cols-2;
+  }
+
+  .grid-2-responsive {
+    @apply grid-cols-2;
+  }
+}
+
+/* Three columns on desktop */
+@media (min-width: 1024px) {
+  .grid-responsive {
+    @apply grid-cols-3;
+  }
+
+  .grid-2-responsive {
+    @apply grid-cols-2;
+  }
+}
+
+/* ===== TOUCH DEVICE OPTIMIZATION ===== */
+
+/* Larger touch targets on mobile */
+@media (hover: none) and (pointer: coarse) {
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+  }
+
+  .btn {
+    min-height: 48px;
+  }
+
+  /* Reduce spacing precision for touch */
+  .gap-2 {
+    @apply gap-3;
+  }
+}
+
+/* ===== ORIENTATION CHANGES ===== */
+
+/* Portrait mode optimization */
+@media (orientation: portrait) and (max-height: 500px) {
+  header {
+    padding: 0.75rem;
+  }
+
+  main {
+    padding: 0.75rem;
+  }
+}
+
+/* Landscape mode optimization */
+@media (orientation: landscape) and (max-height: 500px) {
+  aside {
+    height: 100vh;
+  }
+
+  main {
+    max-height: calc(100vh - 60px);
+  }
+}

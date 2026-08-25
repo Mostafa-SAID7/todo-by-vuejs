@@ -1,0 +1,275 @@
+/**
+ * Global Styles
+ * Tailwind setup and global utilities with professional color system
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Root Typography & Base Setup */
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Base Styles */
+* {
+  @apply transition-colors duration-200;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Ensure full page background coverage */
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+/* Typography Scale */
+h1 {
+  @apply text-4xl font-bold tracking-tight;
+  color: var(--text-primary);
+}
+
+h2 {
+  @apply text-2xl font-bold;
+  color: var(--text-primary);
+}
+
+h3 {
+  @apply text-xl font-semibold;
+  color: var(--text-primary);
+}
+
+h4 {
+  @apply text-lg font-semibold;
+  color: var(--text-secondary);
+}
+
+p {
+  @apply text-base leading-relaxed;
+  color: var(--text-secondary);
+}
+
+small {
+  @apply text-sm;
+  color: var(--text-tertiary);
+}
+
+/* Links */
+a {
+  color: var(--accent-primary);
+  text-decoration-color: var(--accent-primary);
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-dark);
+  text-decoration-color: var(--accent-dark);
+}
+
+/* Scrollbar Styling - Respects Theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: 10px;
+  transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Firefox Scrollbar */
+* {
+  scrollbar-color: var(--text-tertiary) var(--bg-tertiary);
+  scrollbar-width: thin;
+}
+
+/* Selection Styling */
+::selection {
+  background-color: var(--accent-primary);
+  color: white;
+}
+
+/* Focus Ring Utilities */
+.focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--accent-bg), 0 0 0 5px var(--accent-primary);
+}
+
+/* Form Elements Base Styling */
+input,
+select,
+textarea {
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  border-color: var(--border-primary);
+  font-family: inherit;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-bg);
+}
+
+/* Smooth Transitions */
+.transition-all {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.transition-colors {
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+/* Container Utilities */
+.container-base {
+  @apply mx-auto max-w-2xl px-4 py-8;
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+
+  h3 {
+    @apply text-lg;
+  }
+}
+
+/* Text Utilities */
+.text-truncate {
+  @apply truncate;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+/* RTL Support */
+[dir='rtl'] {
+  direction: rtl;
+}
+
+[dir='rtl'] .ml-4 {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+
+[dir='rtl'] .mr-4 {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+[dir='rtl'] .space-x-2 > :not([hidden]) ~ :not([hidden]) {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir='rtl'] .gap-x-4 {
+  column-gap: 0;
+  row-gap: 1rem;
+  margin-right: 1rem;
+}
+
+/* Smooth Page Transitions */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark Mode Color Scheme */
+html.dark {
+  color-scheme: dark;
+}
+
+html {
+  color-scheme: light;
+}
+
+/* Smooth Color Transitions on Theme Change */
+* {
+  @apply transition-colors duration-300;
+  transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+}
