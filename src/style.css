@@ -1,41 +1,90 @@
-/**
- * Main Style Entry Point
- * Imports all global styles, components, themes, and animations
- */
-
-/* Import Smooth Transitions FIRST (before other styles) */
-@import './styles/smooth-transitions.css';
-
-/* Import Animations */
-@import './styles/animations.css';
-
-/* Import Global Styles */
-@import './styles/globals.css';
-@import './styles/components.css';
 @import './styles/themes.css';
 
-/* Default Tailwind Directives */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Typography Base */
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@layer base {
+  :root {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: #111111;
+  }
+  
+  body {
+    @apply bg-dash-bg;
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+  }
 }
 
-/* Body Defaults */
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
+/* ============================================
+   Global: Native date/time picker indicator
+   ============================================ */
+
+/* Light mode — subtle dark icon */
+input[type='date']::-webkit-calendar-picker-indicator,
+input[type='datetime-local']::-webkit-calendar-picker-indicator,
+input[type='month']::-webkit-calendar-picker-indicator,
+input[type='week']::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  border-radius: 4px;
 }
 
-/* Dark Mode Color Scheme */
-.dark {
-  color-scheme: dark;
+input[type='date']::-webkit-calendar-picker-indicator:hover,
+input[type='datetime-local']::-webkit-calendar-picker-indicator:hover {
+  opacity: 0.9;
+}
+
+/* Dark mode — invert to white */
+.dark input[type='date']::-webkit-calendar-picker-indicator,
+.dark input[type='datetime-local']::-webkit-calendar-picker-indicator,
+.dark input[type='month']::-webkit-calendar-picker-indicator,
+.dark input[type='week']::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(0.8);
+  opacity: 0.55;
+}
+
+.dark input[type='date']::-webkit-calendar-picker-indicator:hover,
+.dark input[type='datetime-local']::-webkit-calendar-picker-indicator:hover {
+  opacity: 1;
+}
+
+/* Dark mode — date field text color */
+.dark input[type='date']::-webkit-datetime-edit,
+.dark input[type='datetime-local']::-webkit-datetime-edit {
+  color: #f0f0f0;
+}
+
+.dark input[type='date']::-webkit-datetime-edit-day-field,
+.dark input[type='date']::-webkit-datetime-edit-month-field,
+.dark input[type='date']::-webkit-datetime-edit-year-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-day-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-month-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-year-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-hour-field,
+.dark input[type='datetime-local']::-webkit-datetime-edit-minute-field {
+  color: #f0f0f0;
+}
+
+.dark input[type='date']::-webkit-datetime-edit-text,
+.dark input[type='datetime-local']::-webkit-datetime-edit-text {
+  color: #888888;
+}
+
+/* ============================================
+   Global: Native select option dark mode
+   ============================================ */
+
+.dark select option {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+select option {
+  background-color: #ffffff;
+  color: #111111;
 }

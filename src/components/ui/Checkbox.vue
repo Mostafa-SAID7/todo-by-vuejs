@@ -24,14 +24,13 @@ defineEmits<{
       type="checkbox"
       :checked="modelValue"
       :disabled="disabled"
-      class="w-5 h-5 rounded cursor-pointer accent-blue-500"
+      class="w-5 h-5 rounded cursor-pointer accent-dash-orange border-gray-300 dark:border-white/10 dark:bg-white/5 focus:ring-0"
       @change="$emit('update:modelValue', ($event.target as HTMLInputElement).checked)"
     />
     <span
       v-if="label"
       :class="[
-        'text-sm',
-        isDark ? 'text-gray-200' : 'text-gray-800',
+        'text-sm text-dash-text dark:text-dash-darktext',
         disabled ? 'opacity-50' : '',
       ]"
     >

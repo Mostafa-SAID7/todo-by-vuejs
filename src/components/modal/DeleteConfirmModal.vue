@@ -35,21 +35,12 @@ const { t } = useI18nWrapper()
   >
     <div class="space-y-4">
       <!-- Message -->
-      <p
-        :class="[
-          isDark ? 'text-gray-300' : 'text-gray-600',
-        ]"
-      >
+      <p class="text-dash-textmuted dark:text-dash-darktext/70">
         {{ t('modal.delete.message') }}
       </p>
 
       <!-- Todo Text -->
-      <p
-        :class="[
-          'font-medium',
-          isDark ? 'text-white' : 'text-gray-800',
-        ]"
-      >
+      <p class="font-medium text-dash-text dark:text-dash-darktext">
         "{{ todo?.text }}"
       </p>
 

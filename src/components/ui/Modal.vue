@@ -37,9 +37,8 @@ defineEmits<{
     >
       <div
         :class="[
-          'relative p-6 rounded-2xl shadow-2xl',
-          'bg-[var(--bg-primary)] border border-[var(--border-accent)]',
-          'color-transition',
+          'relative p-6 rounded-3xl shadow-2xl border',
+          'bg-white dark:bg-dash-darkcard border-gray-100 dark:border-white/5',
           MODAL_SIZES[size],
         ]"
       >
@@ -49,8 +48,8 @@ defineEmits<{
           type="button"
           :class="[
             'absolute top-4 right-4',
-            'text-[var(--text-tertiary)] hover:text-[var(--accent-primary)]',
-            'transition-colors duration-300',
+            'text-dash-textmuted hover:text-dash-orange',
+            'transition-colors duration-350',
           ]"
           @click="$emit('close')"
         >
@@ -62,7 +61,7 @@ defineEmits<{
           v-if="title"
           :class="[
             'text-2xl font-bold mb-6',
-            'text-[var(--text-primary)] color-transition',
+            'text-dash-text dark:text-dash-darktext',
           ]"
         >
           {{ title }}

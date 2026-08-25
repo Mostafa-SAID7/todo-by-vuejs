@@ -1,9 +1,4 @@
 <script setup lang="ts">
-/**
- * TodoItem Component
- * Individual todo item display
- */
-
 import type { Todo } from '@/types/todo'
 import Checkbox from '@/components/ui/Checkbox.vue'
 import TodoMeta from '@/components/todo/TodoMeta.vue'
@@ -26,11 +21,11 @@ defineEmits<{
 <template>
   <div
     :class="[
-      'flex items-center justify-between p-4 rounded-lg shadow-md transition-colors',
-      isDark ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-50 hover:bg-gray-100',
+      'flex items-center justify-between p-4 rounded-2xl border shadow-sm hover:shadow-md transition-all duration-300',
+      'bg-white dark:bg-dash-darkcard border-gray-100 dark:border-white/5',
     ]"
   >
-    <div class="flex items-center gap-3 flex-1">
+    <div class="flex items-center gap-4 flex-1">
       <!-- Checkbox -->
       <Checkbox
         :model-value="todo.completed"
@@ -42,9 +37,10 @@ defineEmits<{
       <div class="flex flex-col flex-1">
         <span
           :class="[
-            'transition-colors',
-            todo.completed ? 'line-through opacity-50' : '',
-            isDark ? 'text-white' : 'text-gray-800',
+            'transition-colors font-medium text-sm md:text-base',
+            todo.completed 
+              ? 'line-through text-dash-textmuted dark:text-dash-textmuted opacity-50' 
+              : 'text-dash-text dark:text-dash-darktext',
           ]"
         >
           {{ todo.text }}
@@ -68,3 +64,4 @@ defineEmits<{
     </div>
   </div>
 </template>
+

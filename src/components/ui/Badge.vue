@@ -24,12 +24,12 @@ defineEmits<{
 }>()
 
 const variantClasses = {
-  primary: 'bg-[var(--accent-bg)] text-[var(--accent-primary)]',
-  secondary: 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)]',
-  success: 'bg-[var(--success-bg)] text-[var(--success-primary)]',
-  warning: 'bg-[var(--warning-bg)] text-[var(--warning-primary)]',
-  danger: 'bg-[var(--danger-bg)] text-[var(--danger-primary)]',
-  info: 'bg-[var(--info-bg)] text-[var(--info-primary)]',
+  primary: 'bg-dash-orange/15 text-dash-orange',
+  secondary: 'bg-gray-100 dark:bg-white/10 text-dash-text dark:text-dash-darktext',
+  success: 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400',
+  warning: 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400',
+  danger: 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400',
+  info: 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400',
 }
 
 const sizeClasses = {

@@ -17,25 +17,14 @@ const { t } = useI18nWrapper()
 </script>
 
 <template>
-  <div
-    :class="[
-      'flex flex-col items-center justify-center py-12',
-    ]"
-  >
+  <div class="flex flex-col items-center justify-center py-12">
     <div class="mb-4">
       <CheckCircle2
         :size="64"
-        :class="[
-          'text-[var(--accent-primary)]',
-        ]"
+        class="text-dash-orange"
       />
     </div>
-    <p
-      :class="[
-        'text-lg font-medium',
-        'text-[var(--text-secondary)]',
-      ]"
-    >
+    <p class="text-lg font-medium text-dash-textmuted dark:text-dash-darktext/60">
       {{ t('todo.empty') || 'No todos yet. Create one to get started!' }}
     </p>
   </div>

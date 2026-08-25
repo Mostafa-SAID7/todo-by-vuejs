@@ -293,9 +293,15 @@ html.dark {
   box-shadow: 0 0 0 3px var(--accent-bg), 0 0 0 5px var(--accent-primary);
 }
 
-/* Smooth Transitions */
-* {
-  @apply transition-colors duration-500;
+/* Smooth Transitions — scoped only to interactive elements, not * selector */
+a,
+button,
+input,
+select,
+textarea,
+[class*='bg-'],
+[class*='text-'],
+[class*='border-'] {
   transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 

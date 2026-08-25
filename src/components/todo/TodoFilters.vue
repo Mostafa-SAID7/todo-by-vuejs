@@ -1,12 +1,9 @@
 <script setup lang="ts">
-/**
- * TodoFilters Component
- * Filter and sort controls for todos
- */
-
+import { computed } from 'vue'
 import type { FilterStatus, SortOption } from '@/types/todo'
 import { FILTER_OPTIONS, SORT_OPTIONS } from '@/constants'
 import Select from '@/components/ui/Select.vue'
+import { useI18nWrapper } from '@/composables/useI18nWrapper'
 
 interface Props {
   filterStatus: FilterStatus
@@ -21,15 +18,21 @@ defineEmits<{
   'update:sortBy': [value: SortOption]
 }>()
 
-const filterOptions = Object.entries(FILTER_OPTIONS).map(([_, config]: [string, any]) => ({
-  label: config.label,
-  value: config.value,
-}))
+const { t } = useI18nWrapper()
 
-const sortOptions = Object.entries(SORT_OPTIONS).map(([_, config]: [string, any]) => ({
-  label: config.label,
-  value: config.value,
-}))
+const filterOptions = computed(() => 
+  Object.entries(FILTER_OPTIONS).map(([_, config]: [string, any]) => ({
+    label: t(config.label),
+    value: config.value,
+  }))
+)
+
+const sortOptions = computed(() => 
+  Object.entries(SORT_OPTIONS).map(([_, config]: [string, any]) => ({
+    label: t(config.label),
+    value: config.value,
+  }))
+)
 </script>
 
 <template>

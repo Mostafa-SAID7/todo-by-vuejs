@@ -38,13 +38,13 @@ const sizeClasses = {
 
 const variantClasses = {
   primary:
-    'bg-[var(--accent-primary)] text-white hover:bg-[var(--accent-dark)] active:bg-[var(--accent-darker)]',
+    'bg-dash-orange text-white hover:bg-dash-orange/90 active:scale-[0.98]',
   secondary:
-    'bg-[var(--bg-tertiary)] text-[var(--text-primary)] hover:bg-[var(--bg-hover)] border border-[var(--border-primary)]',
+    'bg-dash-dark/5 dark:bg-white/10 text-dash-text dark:text-dash-darktext hover:bg-dash-dark/10 dark:hover:bg-white/20 border border-dash-dark/10 dark:border-white/5',
   danger:
-    'bg-[var(--danger-primary)] text-white hover:bg-[var(--danger-light)] active:bg-[var(--danger-primary)]',
+    'bg-red-500 text-white hover:bg-red-600 active:bg-red-700',
   success:
-    'bg-[var(--success-primary)] text-white hover:bg-[var(--success-light)] active:bg-[var(--success-primary)]',
+    'bg-emerald-500 text-white hover:bg-emerald-600 active:bg-emerald-750',
 }
 </script>
 

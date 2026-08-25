@@ -1,86 +1,43 @@
 <script setup lang="ts">
-/**
- * App.vue
- * Root application component
- * Orchestrates composables and components with responsive sidebar + header layout
- */
-
 import { onMounted, ref } from 'vue'
-import type { UpdateTodoPayload, CreateTodoPayload } from '@/types/todo'
 
-// Import Composables
+// Composables
 import { useTodo } from '@/composables/useTodo'
 import { useFilter } from '@/composables/useFilter'
 import { useTheme } from '@/composables/useTheme'
-import { useI18nWrapper } from '@/composables/useI18nWrapper'
-import { useSuggestions } from '@/composables/useSuggestions'
 import { useLocalStorage } from '@/composables/useLocalStorage'
+import type { CreateTodoPayload, UpdateTodoPayload, Todo } from '@/types/todo'
 
-// Import Layout Components
-import MainLayout from '@/components/layout/MainLayout.vue'
-import Container from '@/components/layout/Container.vue'
-
-// Import Todo Components
-import TodoForm from '@/components/todo/TodoForm.vue'
-import TodoFilters from '@/components/todo/TodoFilters.vue'
-import TodoItem from '@/components/todo/TodoItem.vue'
-import TodoEmpty from '@/components/todo/TodoEmpty.vue'
+// Modals
 import EditTodoModal from '@/components/modal/EditTodoModal.vue'
 import DeleteConfirmModal from '@/components/modal/DeleteConfirmModal.vue'
 
-// Initialize Composables
+// Main Layout
+import MainLayout from '@/components/layout/MainLayout.vue'
+
 const { todos, addTodo, updateTodo, deleteTodo, toggleTodo } = useTodo()
-const { filterStatus, sortBy, filteredAndSortedTodos, setFilterStatus, setSortBy } =
-  useFilter(todos)
-const { isDark, initializeTheme, toggleTheme } = useTheme()
-const { locale: currentLanguage, initializeLanguage, toggleLanguage } = useI18nWrapper()
-const { suggestions, showSuggestions } = useSuggestions()
+const { filterStatus, sortBy, filteredAndSortedTodos, setFilterStatus, setSortBy } = useFilter(todos)
+const { isDark, toggleTheme, initializeTheme } = useTheme()
 const { loadTodos, setupAutoSave } = useLocalStorage()
 
-// Modal and Edit State
-const editingTodo = ref<any>(null)
-const todoToDelete = ref<any>(null)
-const currentSection = ref<string>('all')
-const searchQuery = ref<string>('')
+const editingTodo = ref<Todo | null>(null)
+const todoToDelete = ref<Todo | null>(null)
+const isSidebarOpen = ref(false)
+const activeTab = ref('home')
 
-/**
- * Initialize application on mount
- */
 onMounted(() => {
-  // Load and apply theme
   initializeTheme()
-
-  // Load and apply language
-  initializeLanguage()
-
-  // Load todos from localStorage
-  const savedTodos = loadTodos()
-  todos.value = savedTodos
-
-  // Setup auto-save for todos
+  todos.value = loadTodos()
   setupAutoSave(todos)
 })
 
-/**
- * Handle new todo submission
- */
-const handleAddTodo = (payload: CreateTodoPayload) => {
-  addTodo(payload)
-}
-
-/**
- * Handle edit modal save
- */
+const handleAddTodo = (payload: CreateTodoPayload) => addTodo(payload)
 const handleSaveEdit = (payload: UpdateTodoPayload) => {
   if (editingTodo.value) {
     updateTodo(editingTodo.value.id, payload)
     editingTodo.value = null
   }
 }
-
-/**
- * Handle delete confirmation
- */
 const handleConfirmDelete = () => {
   if (todoToDelete.value) {
     deleteTodo(todoToDelete.value.id)
@@ -88,72 +45,38 @@ const handleConfirmDelete = () => {
   }
 }
 
-/**
- * Handle todo toggle completion
- */
-const handleToggleTodo = (id: number) => {
-  toggleTodo(id)
+const handleImportTodos = (imported: Todo[]) => {
+  todos.value = imported
 }
 
-/**
- * Handle section navigation from sidebar
- */
-const handleNavigate = (section: string) => {
-  currentSection.value = section
-}
-
-/**
- * Handle search
- */
-const handleSearch = (query: string) => {
-  searchQuery.value = query
+const handleClearTodos = () => {
+  todos.value = []
 }
 </script>
 
 <template>
-  <MainLayout
-    :is-dark="isDark"
-    :current-language="currentLanguage"
-    :title="$t('app.title')"
-    @toggle-theme="toggleTheme"
-    @toggle-language="toggleLanguage"
-    @navigate="handleNavigate"
-    @search="handleSearch"
-  >
-    <Container :is-dark="isDark">
-      <!-- Todo Form -->
-      <TodoForm :is-dark="isDark" @submit="handleAddTodo" />
+  <div :class="{'dark': isDark}">
+    <MainLayout
+      v-model:active-tab="activeTab"
+      :todos="todos"
+      :filtered-todos="filteredAndSortedTodos"
+      :is-dark="isDark"
+      :is-sidebar-open="isSidebarOpen"
+      :filter-status="filterStatus"
+      :sort-by="sortBy"
+      @toggle-theme="toggleTheme"
+      @toggle-sidebar="isSidebarOpen = !isSidebarOpen"
+      @update:filter-status="setFilterStatus"
+      @update:sort-by="setSortBy"
+      @add-todo="handleAddTodo"
+      @toggle-todo="toggleTodo"
+      @edit-todo="editingTodo = $event"
+      @delete-todo="todoToDelete = $event"
+      @import-todos="handleImportTodos"
+      @clear-todos="handleClearTodos"
+    />
 
-      <!-- Filters Section -->
-      <TodoFilters
-        :filter-status="filterStatus"
-        :sort-by="sortBy"
-        :is-dark="isDark"
-        @update:filter-status="setFilterStatus"
-        @update:sort-by="setSortBy"
-      />
-
-      <!-- Todo List or Empty State -->
-      <div
-        v-if="filteredAndSortedTodos.length > 0"
-        class="space-y-3"
-      >
-        <TodoItem
-          v-for="todo in filteredAndSortedTodos"
-          :key="todo.id"
-          :todo="todo"
-          :is-dark="isDark"
-          @update:completed="handleToggleTodo(todo.id)"
-          @edit="editingTodo = todo"
-          @delete="todoToDelete = todo"
-        />
-      </div>
-
-      <!-- Empty State -->
-      <TodoEmpty v-else :is-dark="isDark" />
-    </Container>
-
-    <!-- Edit Todo Modal -->
+    <!-- Modals -->
     <EditTodoModal
       :is-open="editingTodo !== null"
       :todo="editingTodo"
@@ -161,8 +84,6 @@ const handleSearch = (query: string) => {
       @close="editingTodo = null"
       @save="handleSaveEdit"
     />
-
-    <!-- Delete Confirmation Modal -->
     <DeleteConfirmModal
       :is-open="todoToDelete !== null"
       :todo="todoToDelete"
@@ -170,5 +91,5 @@ const handleSearch = (query: string) => {
       @close="todoToDelete = null"
       @confirm="handleConfirmDelete"
     />
-  </MainLayout>
+  </div>
 </template>
