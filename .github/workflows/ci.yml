@@ -49,7 +49,7 @@ jobs:
         run: npm ci
 
       - name: Run tests
-        run: npm run test
+        run: npm run test -- --run
 
   build:
     name: Build
@@ -92,7 +92,7 @@ jobs:
     steps:
       - name: Check job status
         run: |
-          if [[ ${{ needs.lint.result }} == 'failure' || ${{ needs.test.result }} == 'failure' || ${{ needs.build.result }} == 'failure' ]]; then
+          if [[ "${{ needs.lint.result }}" == "failure" || "${{ needs.test.result }}" == "failure" || "${{ needs.build.result }}" == "failure" ]]; then
             echo "❌ CI Pipeline FAILED"
             exit 1
           fi
